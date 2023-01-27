@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieCard } from 'services/movies-api';
-import { Box, Title } from './MovieCardPage.styled';
+import { Box, Title, GoBackBtn } from './MovieCardPage.styled';
 
 export const MovieCardPage = () => {
   const [movieCard, setMovieCard] = useState({});
@@ -9,6 +9,8 @@ export const MovieCardPage = () => {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
 
   useEffect(() => {
     const fetchMovieCard = async () => {
@@ -25,9 +27,13 @@ export const MovieCardPage = () => {
     fetchMovieCard();
     console.log('fetchCard');
   }, [id]);
+
   const { title } = movieCard;
   return (
     <Box>
+      <GoBackBtn type="button" onClick={goBack}>
+        Go back
+      </GoBackBtn>
       <Title>{title}</Title>
     </Box>
   );
