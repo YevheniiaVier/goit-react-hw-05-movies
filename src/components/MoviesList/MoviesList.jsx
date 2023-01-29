@@ -1,44 +1,40 @@
-import { useState, useEffect } from 'react';
+import {
+  List,
+  MovieLink,
+  MovieCard,
+  Poster,
+  MovieTitle,
+} from './MoviesList.styled';
+import defaultImg from '../../defaultImg.jpg';
 
-import { List, MovieLink, MovieCard } from './MoviesList.styled';
-import { getMovies } from 'services/movies-api';
-
-export const MoviesList = () => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      setLoading(true);
-      try {
-        const result = await getMovies();
-        setMovies(prevState => [...prevState, ...result]);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchMovies();
-    console.log('fetch');
-  }, []);
-
+export const MoviesList = ({ movies }) => {
   const elements = movies.map(
-    ({ id, title, name, original_title, original_name }, index) => (
+    (
+      { id, title, name, original_title, original_name, poster_path },
+      index
+    ) => (
       <MovieCard key={id + index}>
         <MovieLink to={`/movies/${id}`}>
-          {title ?? name ?? original_title ?? original_name}
+          <Poster
+            src={
+              poster_path === null
+                ? defaultImg
+                : `https://image.tmdb.org/t/p/w300/${poster_path}`
+            }
+            alt={title ?? name ?? original_title ?? original_name}
+            loading="lazy"
+          />
+          <MovieTitle>
+            {title ?? name ?? original_title ?? original_name}
+          </MovieTitle>
         </MovieLink>
       </MovieCard>
     )
   );
   //   console.log(movies);
-  return (
-    <>
-      {loading && <p>...loading</p>}
-      {error && <p>...error</p>}
-      <List>{elements}</List>
-    </>
-  );
+  return <List>{elements}</List>;
+};
+
+MoviesList.defaultProps = {
+  movies: [],
 };
