@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import { Box, Title } from './MoviesPage.styled';
 import { MovieSearchForm } from 'components/MovieSearchForm/MovieSearchForm';
 import { getMovieBySearch } from 'services/movies-api';
@@ -9,6 +11,8 @@ export const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [SearchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchMovies = async () => {

@@ -62,10 +62,10 @@ export const MovieLink = styled(Link)`
 
 export const MovieTitle = styled.p`
   margin: 0;
-  padding: 0;
+  padding: 10px;
   color: ${p => p.theme.colors.accent};
   font-weight: 500;
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1.17;
 
   @media screen and (min-width: 768px) {
