@@ -1,7 +1,7 @@
 import { Box, Title } from './HomePage.styled';
 import { Movies } from 'components/Movies/Movies';
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <Box>
       <Title>Trending today</Title>
@@ -9,3 +9,5 @@ export const HomePage = () => {
     </Box>
   );
 };
+
+export default HomePage;

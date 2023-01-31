@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledLink = styled(Link)``;
+export const MenuList = styled.ul``;
+export const MenuItem = styled.li``;
 
 export const Box = styled.div`
   display: flex;

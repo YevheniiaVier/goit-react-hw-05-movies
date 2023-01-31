@@ -1,6 +1,6 @@
 import { Box, Title, StyledLink as Link } from './NotExistingPage.styled.';
 
-export const NotExistingPage = () => {
+const NotExistingPage = () => {
   return (
     <Box>
       <Title>Not Existing Page</Title>
@@ -8,3 +8,5 @@ export const NotExistingPage = () => {
     </Box>
   );
 };
+
+export default NotExistingPage;

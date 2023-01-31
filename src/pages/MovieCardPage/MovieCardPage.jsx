@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { getMovieCard, getReviews } from 'services/movies-api';
 // import { CastPage } from '../CastPage/CastPage';
-import { Reviews } from './Reviews';
+// import { Reviews } from './Reviews';
 import {
   Box,
   Title,
@@ -13,14 +13,15 @@ import {
   Info,
   Poster,
   PosterBox,
+  MenuItem,
+  MenuList,
   StyledLink as Link,
 } from './MovieCardPage.styled';
 import defaultImg from '../../images/default.png';
 // import goBackIcon from '../../images/go-back-icon.png';
 
-export const MovieCardPage = () => {
+const MovieCardPage = () => {
   const [movieCard, setMovieCard] = useState({});
-  const [reviews, setReviews] = useState([]);
   //   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -28,9 +29,9 @@ export const MovieCardPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { from } = location.state;
+  const from = location.state?.from || '/movies';
 
-  console.log('location', location);
+  //   console.log('location', location);
   const goBack = () => navigate(from);
 
   useEffect(() => {
@@ -46,36 +47,8 @@ export const MovieCardPage = () => {
       }
     };
     fetchMovieCard();
-    console.log('fetchCard');
+    // console.log('fetchCard');
   }, [id]);
-
-  //   useEffect(() => {
-  //     const fetchMovieCast = async () => {
-  //       try {
-  //         const result = await getCast(id);
-  //         // console.log(result);
-  //         setCast(result);
-  //       } catch (error) {
-  //         setError(error.message);
-  //       }
-  //     };
-  //     fetchMovieCast();
-  //     console.log('fetchCast', cast);
-  //   }, [id]);
-
-  //   useEffect(() => {
-  //     const fetchMovieReviews = async () => {
-  //       try {
-  //         const result = await getReviews(id);
-
-  //         setReviews(result);
-  //       } catch (error) {
-  //         setError(error.message);
-  //       }
-  //     };
-  //     fetchMovieReviews();
-  //     console.log('fetchrevies', reviews);
-  //   }, [id, reviews]);
 
   const {
     title,
@@ -92,7 +65,7 @@ export const MovieCardPage = () => {
 
   const movieTitle = title ?? name ?? original_name ?? original_title ?? '';
   const movieGenres = genres ? genres.map(genre => genre.name) : '';
-
+  const poster = poster_path ?? defaultImg;
   return (
     <>
       <GoBackBtn type="button" onClick={goBack}>
@@ -101,18 +74,14 @@ export const MovieCardPage = () => {
       <Box>
         <PosterBox>
           <Poster
-            srcset={
-              poster_path === null
-                ? defaultImg
-                : `https://image.tmdb.org/t/p/w300/${poster_path}      300w,
-    https://image.tmdb.org/t/p/w500/${poster_path}      500w,
-    https://image.tmdb.org/t/p/w780/${poster_path}      780w,
-    https://image.tmdb.org/t/p/w1280/${poster_path}    1280w,
-    https://image.tmdb.org/t/p/original/${poster_path} 2000w
-  `
-            }
-            src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-            sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
+            // srcset={`https://image.tmdb.org/t/p/w300/${poster_path}      300w,
+            //     https://image.tmdb.org/t/p/w500/${poster_path}      500w,
+            //     https://image.tmdb.org/t/p/w780/${poster_path}      780w,
+            //     https://image.tmdb.org/t/p/w1280/${poster_path}    1280w,
+            //     https://image.tmdb.org/t/p/original/${poster_path} 2000w
+            //   `}
+            src={`https://image.tmdb.org/t/p/w1280${poster}`}
+            // sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
             alt={movieTitle}
           />
         </PosterBox>
@@ -136,11 +105,21 @@ export const MovieCardPage = () => {
           )}
         </InfoBox>
       </Box>
-      <Link state={{ from }} to={`/movies/${id}/credits`}>
-        Cast
-      </Link>
+      <MenuList>
+        <MenuItem>
+          <Link state={{ from }} to={`/movies/${id}/credits`}>
+            Cast
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link state={{ from }} to={`/movies/${id}/reviews`}>
+            Reviews
+          </Link>
+        </MenuItem>
+      </MenuList>
       <Outlet />
-      <Reviews movieReviews={reviews} />
     </>
   );
 };
+
+export default MovieCardPage;

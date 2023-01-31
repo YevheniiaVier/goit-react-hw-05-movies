@@ -11,7 +11,7 @@ import defaultImg from '../../images/default.png';
 
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
-  console.log('location list', location);
+  //   console.log('location list', location);
   const elements = movies.map(
     (
       { id, title, name, original_title, original_name, poster_path },
@@ -23,7 +23,7 @@ export const MoviesList = ({ movies }) => {
             src={
               poster_path === null
                 ? defaultImg
-                : `https://image.tmdb.org/t/p/w300/${poster_path}`
+                : `https://image.tmdb.org/t/p/w1280/${poster_path}`
             }
             alt={title ?? name ?? original_title ?? original_name}
             loading="lazy"

@@ -43,8 +43,6 @@ export const getCast = async id => {
 
 export const getReviews = async id => {
   const { data } = await instance.get(`/movie/${id}/reviews`);
-
-  console.log(data.results);
   return data.results;
 };
 

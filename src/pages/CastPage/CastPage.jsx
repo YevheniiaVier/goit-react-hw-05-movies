@@ -12,15 +12,12 @@ import {
 
 import defaultImg from '../../images/default.png';
 
-export const CastPage = () => {
+const CastPage = () => {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { id } = useParams();
-  // const navigate = useNavigate();
-  // const goBack = () => navigate(-1);
-
   useEffect(() => {
     const fetchMovieCast = async () => {
       try {
@@ -36,11 +33,11 @@ export const CastPage = () => {
     };
     fetchMovieCast();
     console.log('fetchCast', cast);
-  }, []);
+  }, [id]);
 
   const elements = cast.map(
-    ({ id, name, original_name, profile_path, character }, index) => (
-      <CastCard key={id + index}>
+    ({ name, original_name, profile_path, character }, index) => (
+      <CastCard key={name}>
         <CastImg
           src={
             profile_path === null
@@ -67,3 +64,5 @@ export const CastPage = () => {
 CastPage.defaultProps = {
   movies: [],
 };
+
+export default CastPage;

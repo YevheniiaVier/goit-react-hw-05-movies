@@ -6,7 +6,7 @@ import { MovieSearchForm } from 'components/MovieSearchForm/MovieSearchForm';
 import { getMovieBySearch } from 'services/movies-api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   //   const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -36,9 +36,8 @@ export const MoviesPage = () => {
 
   const handleSearch = search => {
     setMovies([]);
-
     setSearchParams({ search });
-    console.log(search);
+    // console.log(search);
   };
   return (
     <Box>
@@ -50,3 +49,5 @@ export const MoviesPage = () => {
     </Box>
   );
 };
+
+export default MoviesPage;
