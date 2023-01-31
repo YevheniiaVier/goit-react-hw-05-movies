@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCast } from 'services/movies-api';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Loader } from 'Loader/Loader';
 import {
   CastBox,
