@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import {
   List,
   MovieLink,
@@ -5,16 +7,18 @@ import {
   Poster,
   MovieTitle,
 } from './MoviesList.styled';
-import defaultImg from '../../defaultImg.jpg';
+import defaultImg from '../../images/default.png';
 
 export const MoviesList = ({ movies }) => {
+  const location = useLocation();
+  console.log('location list', location);
   const elements = movies.map(
     (
       { id, title, name, original_title, original_name, poster_path },
       index
     ) => (
       <MovieCard key={id + index}>
-        <MovieLink to={`/movies/${id}`}>
+        <MovieLink state={{ from: location }} to={`/movies/${id}`}>
           <Poster
             src={
               poster_path === null

@@ -7,12 +7,14 @@ import { getMovieBySearch } from 'services/movies-api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 export const MoviesPage = () => {
-  const [search, setSearch] = useState('');
+  //   const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [SearchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const search = searchParams.get('search');
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -33,13 +35,17 @@ export const MoviesPage = () => {
   }, [search]);
 
   const handleSearch = search => {
-    setSearch(search);
+    setMovies([]);
+
+    setSearchParams({ search });
     console.log(search);
   };
   return (
     <Box>
       <Title>Movies</Title>
       <MovieSearchForm onSubmit={handleSearch} />
+      {loading && <p>...loading</p>}
+      {error && <p>...error</p>}
       {movies.length > 0 && <MoviesList movies={movies} />}
     </Box>
   );
