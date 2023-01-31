@@ -1,19 +1,19 @@
 import { ThreeDots } from 'react-loader-spinner';
-import { StyledBox } from '../ImagesAbsenceView/ImagesAbsenceView.styled';
+import { Box } from 'pages/NotExistingPage/NotExistingPage.styled.';
 
 export const Loader = () => {
   return (
-    <StyledBox>
+    <Box>
       <ThreeDots
         height="80"
         width="80"
         radius="9"
-        color="#5468ff"
+        color="#38D2D2"
         ariaLabel="three-dots-loading"
         wrapperStyle={{}}
         wrapperClassName=""
         visible={true}
       />
-    </StyledBox>
+    </Box>
   );
 };

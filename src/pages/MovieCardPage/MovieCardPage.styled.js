@@ -8,15 +8,9 @@ export const MenuItem = styled.li``;
 export const Box = styled.div`
   display: flex;
   margin-top: 40px;
-
-  //     flex-direction: column;
   gap: 20px;
 `;
 export const PosterBox = styled.div`
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 20px;
-
   margin-bottom: 40px;
 `;
 
@@ -27,7 +21,6 @@ export const Title = styled.h2`
   line-height: 1.15;
   color: #000000;
   text-transform: uppercase;
-  //   margin-bottom: 20px;
   @media screen and (min-width: 1280px) {
     font-size: 30px;
   }

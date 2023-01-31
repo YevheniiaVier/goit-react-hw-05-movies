@@ -45,34 +45,3 @@ export const getReviews = async id => {
   const { data } = await instance.get(`/movie/${id}/reviews`);
   return data.results;
 };
-
-// async function fetchMovieGenres() {
-//   try {
-//     const response = await instance.get(`/genre/movie/list`);
-//     return response.data.genres.reduce((acc, currentValue) => {
-//       acc[currentValue.id] = currentValue.name;
-//       return acc;
-//     }, {});
-//   } catch (error) {
-//     alert('ERRORgenres');
-//   }
-// }
-
-// async function fetchTvGenres() {
-//   try {
-//     const response = await instance.get(`/genre/tv/list`);
-//     return response.data.genres.reduce((acc, currentValue) => {
-//       acc[currentValue.id] = currentValue.name;
-//       return acc;
-//     }, {});
-//   } catch (error) {
-//     alert('ERRORTvgenres');
-//   }
-// }
-
-// export async function combineGenres() {
-//   const movieGenres = await fetchMovieGenres();
-//   const tvGenres = await fetchTvGenres();
-//   const genres = { ...movieGenres, ...tvGenres };
-//   return genres;
-// }

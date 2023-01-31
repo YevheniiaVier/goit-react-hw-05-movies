@@ -1,9 +1,9 @@
 import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { RiArrowGoBackFill } from 'react-icons/ri';
-import { getMovieCard, getReviews } from 'services/movies-api';
-// import { CastPage } from '../CastPage/CastPage';
-// import { Reviews } from './Reviews';
+import { getMovieCard } from 'services/movies-api';
+import { Loader } from 'Loader/Loader';
+
 import {
   Box,
   Title,
@@ -18,11 +18,9 @@ import {
   StyledLink as Link,
 } from './MovieCardPage.styled';
 import defaultImg from '../../images/default.png';
-// import goBackIcon from '../../images/go-back-icon.png';
 
 const MovieCardPage = () => {
   const [movieCard, setMovieCard] = useState({});
-  //   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -30,8 +28,6 @@ const MovieCardPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '/movies';
-
-  //   console.log('location', location);
   const goBack = () => navigate(from);
 
   useEffect(() => {
@@ -47,7 +43,7 @@ const MovieCardPage = () => {
       }
     };
     fetchMovieCard();
-    // console.log('fetchCard');
+    console.log('fetchCard');
   }, [id]);
 
   const {
@@ -72,16 +68,18 @@ const MovieCardPage = () => {
         <RiArrowGoBackFill /> Go back
       </GoBackBtn>
       <Box>
+        {loading && <Loader />}
+        {error && <p>...error</p>}
         <PosterBox>
           <Poster
-            // srcset={`https://image.tmdb.org/t/p/w300/${poster_path}      300w,
-            //     https://image.tmdb.org/t/p/w500/${poster_path}      500w,
-            //     https://image.tmdb.org/t/p/w780/${poster_path}      780w,
-            //     https://image.tmdb.org/t/p/w1280/${poster_path}    1280w,
-            //     https://image.tmdb.org/t/p/original/${poster_path} 2000w
-            //   `}
-            src={`https://image.tmdb.org/t/p/w1280${poster}`}
-            // sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
+            srcset={`https://image.tmdb.org/t/p/w300${poster}      300w,
+                https://image.tmdb.org/t/p/w500${poster}      500w,
+                https://image.tmdb.org/t/p/w780${poster}      780w,
+                https://image.tmdb.org/t/p/w1280${poster}    1280w,
+                https://image.tmdb.org/t/p/original${poster} 2000w
+              `}
+            src={`https://image.tmdb.org/t/p/w500${poster}`}
+            sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
             alt={movieTitle}
           />
         </PosterBox>

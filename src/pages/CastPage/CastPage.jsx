@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCast } from 'services/movies-api';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import { Loader } from 'Loader/Loader';
 import {
   CastBox,
   CastImg,
@@ -36,8 +36,8 @@ const CastPage = () => {
   }, [id]);
 
   const elements = cast.map(
-    ({ name, original_name, profile_path, character }, index) => (
-      <CastCard key={name}>
+    ({ id, name, original_name, profile_path, character }, index) => (
+      <CastCard key={id + name + index}>
         <CastImg
           src={
             profile_path === null
@@ -55,7 +55,8 @@ const CastPage = () => {
   );
   return (
     <CastBox>
-      Cast
+      {loading && <Loader />}
+      {error && <p>...error</p>}
       <CastList>{elements}</CastList>
     </CastBox>
   );

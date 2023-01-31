@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { getMovies } from 'services/movies-api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Message } from './Movies.styled';
+import { Loader } from 'Loader/Loader';
+
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,7 +29,7 @@ export const Movies = () => {
   return (
     <>
       {movies.length > 0 && <MoviesList movies={movies} />}
-      {loading && <Message>...loading</Message>}
+      {loading && <Loader />}
       {error && <Message>...error</Message>}
     </>
   );

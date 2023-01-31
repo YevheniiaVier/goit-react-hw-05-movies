@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getReviews } from 'services/movies-api';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import { Loader } from 'Loader/Loader';
 import {
   ReviewsList,
   ReviewsBox,
@@ -27,7 +27,7 @@ const ReviewsPage = () => {
       }
     };
     fetchMovieReviews();
-    // console.log('fetchrevies', reviews);
+    console.log('fetchrevies', reviews);
   }, []);
 
   const elements = reviews.map(({ author, content, id }) => (
@@ -36,11 +36,11 @@ const ReviewsPage = () => {
       <ReviewsInfo> {content}</ReviewsInfo>
     </ReviewsItem>
   ));
-  // console.log(elements);
 
   return (
     <ReviewsBox>
-      Reviews
+      {loading && <Loader />}
+      {error && <p>...error</p>}
       {reviews.length > 0 ? (
         <ReviewsList>{elements}</ReviewsList>
       ) : (

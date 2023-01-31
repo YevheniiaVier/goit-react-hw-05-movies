@@ -11,7 +11,6 @@ import defaultImg from '../../images/default.png';
 
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
-  //   console.log('location list', location);
   const elements = movies.map(
     (
       { id, title, name, original_title, original_name, poster_path },
@@ -35,7 +34,6 @@ export const MoviesList = ({ movies }) => {
       </MovieCard>
     )
   );
-  //   console.log(movies);
   return <List>{elements}</List>;
 };
 
