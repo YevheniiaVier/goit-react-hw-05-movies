@@ -18,6 +18,7 @@ const CastPage = () => {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
+
   useEffect(() => {
     const fetchMovieCast = async () => {
       try {
@@ -32,7 +33,6 @@ const CastPage = () => {
       }
     };
     fetchMovieCast();
-    console.log('fetchCast', cast);
   }, [id]);
 
   const elements = cast.map(

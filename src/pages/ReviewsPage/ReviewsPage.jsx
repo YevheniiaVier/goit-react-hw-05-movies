@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getReviews } from 'services/movies-api';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Loader } from 'Loader/Loader';
 import {
   ReviewsList,
@@ -19,16 +19,18 @@ const ReviewsPage = () => {
   useEffect(() => {
     const fetchMovieReviews = async () => {
       try {
+        setLoading(true);
         const result = await getReviews(id);
 
         setReviews(result);
       } catch (error) {
         setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     fetchMovieReviews();
-    console.log('fetchrevies', reviews);
-  }, []);
+  }, [id]);
 
   const elements = reviews.map(({ author, content, id }) => (
     <ReviewsItem key={id}>
