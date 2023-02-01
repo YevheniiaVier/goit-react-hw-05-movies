@@ -25,7 +25,7 @@ export const getMovieCard = async id => {
   return data;
 };
 
-export const getMovieBySearch = async (query, page = 1) => {
+export const getMovieBySearch = async (query, page) => {
   const { data } = await instance.get(`search/movie`, {
     params: {
       query,

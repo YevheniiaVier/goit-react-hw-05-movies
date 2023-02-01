@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { getMovies } from 'services/movies-api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
-import { Message } from './Movies.styled';
+import { Message, Wrapper } from './Movies.styled';
 import { Loader } from 'Loader/Loader';
 
 export const Movies = () => {
@@ -27,10 +27,10 @@ export const Movies = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       {movies.length > 0 && <MoviesList movies={movies} />}
       {loading && <Loader />}
       {error && <Message>...error</Message>}
-    </>
+    </Wrapper>
   );
 };

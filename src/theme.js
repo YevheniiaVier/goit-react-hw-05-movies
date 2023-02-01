@@ -9,14 +9,14 @@ export const theme = {
     secondary: '#5c5470',
     grey: '#D3D3D3',
     darkGrey: '#A9A9A9',
-    accent: '#38D2D2',
-    accentDark: '#29668b',
+    accent: '#0cf',
+    accentDark: 'rgb(8, 157, 194)',
     muted: '#F0FFFF',
     online: '#4bc87f',
     offline: ' #db2d43',
     yellow: '#f0f87f',
   },
-  space: [0, 2, 4, 8, 16, 24, 64, 128, 256],
+  space: [0, 2, 4, 6, 8, 16, 24, 64, 128, 256],
   fonts: {
     body: 'system-ui, sans-serif',
     heading: 'Arial, Helvetica, sans-serif',
@@ -25,12 +25,13 @@ export const theme = {
   fontSizes: {
     xs: '12px',
     s: '14px',
-    m: '16px',
+    m: '20px',
     l: '26px',
     xl: '32px',
   },
   fontWeights: {
     normal: 400,
+    bolder: 500,
     bold: 700,
   },
   lineHeights: {
