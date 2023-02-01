@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getCast } from 'services/movies-api';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
+import { MoviesAbsenceView } from 'components/MoviesAbsenceView/MoviesAbsenceView';
 import {
   CastBox,
   CastImg,
@@ -56,8 +57,12 @@ const CastPage = () => {
   return (
     <CastBox>
       {loading && <Loader />}
-      {error && <p>...error</p>}
-      <CastList>{elements}</CastList>
+      {error && <p>{error.message}</p>}
+      {cast.length > 0 ? (
+        <CastList>{elements}</CastList>
+      ) : (
+        <MoviesAbsenceView message="No information about cast" />
+      )}
     </CastBox>
   );
 };

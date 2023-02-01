@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { getReviews } from 'services/movies-api';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
+
+import { MoviesAbsenceView } from 'components/MoviesAbsenceView/MoviesAbsenceView';
+
 import {
   ReviewsList,
   ReviewsBox,
@@ -46,7 +49,7 @@ const ReviewsPage = () => {
       {reviews.length > 0 ? (
         <ReviewsList>{elements}</ReviewsList>
       ) : (
-        <p>No review available yet</p>
+        <MoviesAbsenceView message="No review available yet" />
       )}
     </ReviewsBox>
   );

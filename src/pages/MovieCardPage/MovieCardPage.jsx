@@ -17,7 +17,6 @@ import {
   MenuList,
   StyledLink as Link,
 } from './MovieCardPage.styled';
-import defaultImg from '../../images/default.png';
 
 const MovieCardPage = () => {
   const [movieCard, setMovieCard] = useState({});
