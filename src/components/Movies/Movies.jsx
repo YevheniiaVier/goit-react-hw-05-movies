@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getMovies } from 'services/movies-api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Message, Wrapper } from './Movies.styled';
-import { Loader } from 'Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);

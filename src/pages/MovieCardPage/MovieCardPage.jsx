@@ -2,7 +2,7 @@ import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { getMovieCard } from 'services/movies-api';
-import { Loader } from 'Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 import {
   Box,
@@ -61,7 +61,9 @@ const MovieCardPage = () => {
 
   const movieTitle = title ?? name ?? original_name ?? original_title ?? '';
   const movieGenres = genres ? genres.map(genre => genre.name) : '';
-  const poster = poster_path ?? defaultImg;
+  //   const poster = poster_path ?? defaultImg;
+  const popularity = vote_average !== 0 ? vote_average : false;
+
   return (
     <>
       <GoBackBtn type="button" onClick={goBack}>
@@ -72,21 +74,21 @@ const MovieCardPage = () => {
         {error && <p>...error</p>}
         <PosterBox>
           <Poster
-            srcset={`https://image.tmdb.org/t/p/w300${poster}      300w,
-                https://image.tmdb.org/t/p/w500${poster}      500w,
-                https://image.tmdb.org/t/p/w780${poster}      780w,
-                https://image.tmdb.org/t/p/w1280${poster}    1280w,
-                https://image.tmdb.org/t/p/original${poster} 2000w
+            srcset={`https://image.tmdb.org/t/p/w300${poster_path}      300w,
+                https://image.tmdb.org/t/p/w500${poster_path}      500w,
+                https://image.tmdb.org/t/p/w780${poster_path}      780w,
+                https://image.tmdb.org/t/p/w1280${poster_path}    1280w,
+                https://image.tmdb.org/t/p/original${poster_path} 2000w
               `}
-            src={`https://image.tmdb.org/t/p/w500${poster}`}
-            sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            // sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
             alt={movieTitle}
           />
         </PosterBox>
         <InfoBox>
           <Title>{movieTitle}</Title>
 
-          {vote_average && (
+          {popularity && (
             <Info>User Score: {vote_average.toFixed() * 10 + '%'}</Info>
           )}
           {overview && (

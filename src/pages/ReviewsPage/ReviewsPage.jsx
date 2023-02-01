@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getReviews } from 'services/movies-api';
 import { useParams } from 'react-router-dom';
-import { Loader } from 'Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import {
   ReviewsList,
   ReviewsBox,
