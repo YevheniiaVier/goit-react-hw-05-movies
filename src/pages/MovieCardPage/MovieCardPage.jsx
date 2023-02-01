@@ -32,8 +32,8 @@ const MovieCardPage = () => {
 
   useEffect(() => {
     const fetchMovieCard = async () => {
-      setLoading(true);
       try {
+        setLoading(true);
         const result = await getMovieCard(id);
         setMovieCard(result);
       } catch (error) {
@@ -43,7 +43,6 @@ const MovieCardPage = () => {
       }
     };
     fetchMovieCard();
-    console.log('fetchCard');
   }, [id]);
 
   const {
@@ -51,17 +50,14 @@ const MovieCardPage = () => {
     name,
     original_name,
     original_title,
-
     genres,
     vote_average,
-
     overview,
     poster_path,
   } = movieCard;
 
   const movieTitle = title ?? name ?? original_name ?? original_title ?? '';
   const movieGenres = genres ? genres.map(genre => genre.name) : '';
-  //   const poster = poster_path ?? defaultImg;
   const popularity = vote_average !== 0 ? vote_average : false;
 
   return (
@@ -71,20 +67,23 @@ const MovieCardPage = () => {
       </GoBackBtn>
       <Box>
         {loading && <Loader />}
-        {error && <p>...error</p>}
-        <PosterBox>
-          <Poster
-            srcset={`https://image.tmdb.org/t/p/w300${poster_path}      300w,
+        {error && <p>{error.message}</p>}
+        {poster_path && (
+          <PosterBox>
+            <Poster
+              t={title ?? name ?? original_title ?? original_name}
+              srcset={`https://image.tmdb.org/t/p/w300${poster_path}      300w,
                 https://image.tmdb.org/t/p/w500${poster_path}      500w,
                 https://image.tmdb.org/t/p/w780${poster_path}      780w,
                 https://image.tmdb.org/t/p/w1280${poster_path}    1280w,
                 https://image.tmdb.org/t/p/original${poster_path} 2000w
               `}
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-            // sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
-            alt={movieTitle}
-          />
-        </PosterBox>
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              sizes={`(min - width:1280px) 375px, (min-width:768px) 264px, 100vw`}
+              alt={movieTitle}
+            />
+          </PosterBox>
+        )}
         <InfoBox>
           <Title>{movieTitle}</Title>
 
