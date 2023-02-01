@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SearchForm, Field, SearchBtn } from './MovieSearchForm.styled';
+import { FaSearchengin } from 'react-icons/fa';
 
 export const MovieSearchForm = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,7 +14,6 @@ export const MovieSearchForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log('value in form', searchQuery);
-
     onSubmit(searchQuery);
     setSearchQuery('');
   };
@@ -25,8 +25,11 @@ export const MovieSearchForm = ({ onSubmit }) => {
         onChange={handleChange}
         placeholder="search here"
         required
+        autoComplete="off"
       ></Field>
-      <SearchBtn type="submit">Search</SearchBtn>
+      <SearchBtn type="submit">
+        <FaSearchengin size={30} />
+      </SearchBtn>
     </SearchForm>
   );
 };

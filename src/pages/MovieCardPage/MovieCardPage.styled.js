@@ -50,8 +50,8 @@ export const GoBackBtn = styled.button`
   appearance: none;
   background-image: radial-gradient(
     100% 100% at 100% 0,
-    #5adaff 0,
-    #5468ff 100%
+    #0cf 0,
+    rgb(8, 157, 194) 100%
   );
   border: 0;
   border-radius: 6px;
@@ -83,7 +83,7 @@ export const GoBackBtn = styled.button`
   &:hover,
   &:focus {
     box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
-      rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+      rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #rgb(8, 157, 194) 0 -3px 0 inset;
   }
   transition: background-color 300ms 100ms;
 `;

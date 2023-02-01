@@ -53,12 +53,21 @@ const MoviesPage = () => {
     }
   }, [search, page]);
 
-  const handleSearch = search => {
+  useEffect(() => {
+    if (movies.length > 20 && page !== 1) {
+      onSmoothScroll();
+    }
+  }, [movies, page]);
+
+  const handleSearch = searchText => {
+    if (search === searchText) {
+      return;
+    }
     setMovies([]);
-    setSearchParams({ search });
+    setSearchParams({ search: searchText });
     setPage(1);
     setSearchEnd('');
-    console.log(search);
+    setError(null);
   };
   const loadMore = () => {
     setPage(prevState => prevState + 1);
@@ -79,3 +88,13 @@ const MoviesPage = () => {
 };
 
 export default MoviesPage;
+
+function onSmoothScroll() {
+  const { height: cardHeight } = document
+    .querySelector('#gallery')
+    .firstElementChild.getBoundingClientRect();
+  window.scrollBy({
+    top: cardHeight * 1,
+    behavior: 'smooth',
+  });
+}

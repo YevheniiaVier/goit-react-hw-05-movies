@@ -30,7 +30,7 @@ export const Movies = () => {
     <Wrapper>
       {movies.length > 0 && <MoviesList movies={movies} />}
       {loading && <Loader />}
-      {error && <Message>...error</Message>}
+      {error && <Message>{error.message}</Message>}
     </Wrapper>
   );
 };

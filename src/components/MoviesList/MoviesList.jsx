@@ -34,7 +34,7 @@ export const MoviesList = ({ movies }) => {
       </MovieCard>
     )
   );
-  return <List>{elements}</List>;
+  return <List id="gallery">{elements}</List>;
 };
 
 MoviesList.defaultProps = {
