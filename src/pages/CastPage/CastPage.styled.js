@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const CastBox = styled.div``;
+export const CastBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 export const CastInfo = styled.p`
   margin: 0;
 `;

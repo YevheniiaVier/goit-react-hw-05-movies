@@ -2,20 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const List = styled.ul`
-display: flex;
-flex-direction: column;
-gap: 20px;
-margin: 0;
-padding: 0;
-justify-content: space-around;
-@media screen and (min-width: 768px) {
-flex-wrap: wrap;
-flex-direction: row;
-gap: 20px;
-}
-@media screen and (min-width: 1280px) {
-column-gap: 16px;
-}}
+  display: flex;
+  //   flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;
 
 export const MovieCard = styled.li`
@@ -23,6 +16,7 @@ background-color: white;
 overflow: hidden;
 border-radius: 5px 5px 5px 5px;
 transition: box-shadow 250ms linear;
+width: 230px;
 &:hover,
 &:focus {
 cursor: pointer;
@@ -40,7 +34,6 @@ export const MovieLink = styled(Link)`
 
 export const MovieTitle = styled.p`
   max-width: 336px;
-
   margin: 0;
   padding: 10px;
   color: ${p => p.theme.colors.accent};
@@ -56,15 +49,4 @@ export const Poster = styled.img.attrs(props => ({
   width: 100%;
   height: auto;
   border-radius: 5px 5px 5px 5px;
-
-  @media screen and (min-width: 768px) {
-    width: 336px;
-    height: 455px;
-    object-fit: cover;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 395px;
-    height: 574px;
-  }
 `;
