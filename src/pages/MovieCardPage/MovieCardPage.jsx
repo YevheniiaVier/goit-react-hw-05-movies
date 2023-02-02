@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { getMovieCard } from 'services/movies-api';
 import { Loader } from 'components/Loader/Loader';
+import { MoviesAbsenceView } from 'components/MoviesAbsenceView/MoviesAbsenceView';
 
 import {
   Box,
@@ -69,7 +70,12 @@ const MovieCardPage = () => {
       </GoBackBtn>
       <Box>
         {loading && <Loader />}
-        {error && <p>{error.message}</p>}
+        {!loading && error && (
+          <MoviesAbsenceView
+            message={'Sorry, information about this movie is not available'}
+          />
+        )}
+
         {poster_path && (
           <PosterBox>
             <Poster
@@ -85,38 +91,44 @@ const MovieCardPage = () => {
             />
           </PosterBox>
         )}
-        <InfoBox>
-          <Title>{movieTitle}</Title>
+        {Object.keys(movieCard).length !== 0 && (
+          <InfoBox>
+            {/* {console.log(Object.keys(movieCard)).length} */}
+            <Title>{movieTitle}</Title>
 
-          {popularity && (
-            <Info>User Score: {vote_average.toFixed() * 10 + '%'}</Info>
-          )}
-          {overview && (
-            <>
-              <SubTitle>Overview</SubTitle>
-              <Info>{overview}</Info>
-            </>
-          )}
-          {movieGenres && (
-            <>
-              <SubTitle>Genres</SubTitle>
-              <Info>{movieGenres.join(', ')}</Info>
-            </>
-          )}
-        </InfoBox>
+            {popularity && (
+              <Info>User Score: {vote_average.toFixed() * 10 + '%'}</Info>
+            )}
+            {overview && (
+              <>
+                <SubTitle>Overview</SubTitle>
+                <Info>{overview}</Info>
+              </>
+            )}
+            {movieGenres && (
+              <>
+                <SubTitle>Genres</SubTitle>
+                <Info>{movieGenres.join(', ')}</Info>
+              </>
+            )}
+          </InfoBox>
+        )}
       </Box>
-      <MenuList>
-        <MenuItem>
-          <Link state={{ from }} to={`/movies/${id}/cast`}>
-            Cast
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link state={{ from }} to={`/movies/${id}/reviews`}>
-            Reviews
-          </Link>
-        </MenuItem>
-      </MenuList>
+      {Object.keys(movieCard).length !== 0 && (
+        <MenuList>
+          <MenuItem>
+            <Link state={{ from }} to={`/movies/${id}/cast`}>
+              Cast
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link state={{ from }} to={`/movies/${id}/reviews`}>
+              Reviews
+            </Link>
+          </MenuItem>
+        </MenuList>
+      )}
+
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

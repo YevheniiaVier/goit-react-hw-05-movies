@@ -50,10 +50,11 @@ export const PosterBox = styled.div`
 
 export const Title = styled.h2`
   margin: 0;
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 25px;
   line-height: 1.15;
-  color: #000000;
+  color: ${p => p.theme.colors.primary};
+  margin-bottom: 20px;
   text-transform: uppercase;
   @media screen and (min-width: 1280px) {
     font-size: 30px;
@@ -72,8 +73,8 @@ export const InfoBox = styled.div`
 export const Info = styled.p`
   margin: 0;
 
-  font-weight: 500;
-  font-size: 12px;
+  font-weight: normal;
+  font-size: 18px;
   line-height: 1.66;
   color: #000000;
 `;
