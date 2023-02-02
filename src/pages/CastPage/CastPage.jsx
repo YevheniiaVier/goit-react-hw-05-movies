@@ -36,10 +36,6 @@ const CastPage = () => {
     fetchMovieCast();
   }, [id]);
 
-  // useEffect(() => {
-  //   onSmoothScroll();
-  // }, [cast]);
-
   const elements = cast.map(
     ({ id, name, original_name, profile_path, character }, index) => (
       <CastCard key={id + name + index}>
@@ -63,7 +59,7 @@ const CastPage = () => {
       {loading && <Loader />}
       {error && <p>{error.message}</p>}
       {cast.length > 0 && <CastList>{elements}</CastList>}
-      {cast.length === 0 && (
+      {!error && !loading && cast.length === 0 && (
         <MoviesAbsenceView message="No information about cast" />
       )}
     </CastBox>
@@ -75,10 +71,3 @@ CastPage.defaultProps = {
 };
 
 export default CastPage;
-
-// function onSmoothScroll() {
-//   window.scrollBy({
-//     top: 150,
-//     behavior: 'smooth',
-//   });
-// }

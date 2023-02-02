@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Suspense } from 'react';
 
 import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -116,7 +117,9 @@ const MovieCardPage = () => {
           </Link>
         </MenuItem>
       </MenuList>
-      <Outlet />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

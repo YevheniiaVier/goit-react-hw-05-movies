@@ -35,7 +35,11 @@ export const Link = styled(NavLink)`
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.accent};
   }
-  &:hover {
+  :hover {
+    color: ${p => p.theme.colors.white};
+  }
+  :hover:not(.active),
+  :focus-visible:not(.active) {
     color: ${p => p.theme.colors.white};
   }
 `;

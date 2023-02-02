@@ -35,12 +35,9 @@ const ReviewsPage = () => {
     fetchMovieReviews();
   }, [id]);
 
-  // useEffect(() => {
-  //   onSmoothScroll();
-  // }, [reviews]);
-
   const elements = reviews.map(({ author, content, id }) => (
     <ReviewsItem key={id}>
+      Author:&nbsp;&nbsp;
       {author}
       <ReviewsInfo> {content}</ReviewsInfo>
     </ReviewsItem>
@@ -50,9 +47,8 @@ const ReviewsPage = () => {
     <ReviewsBox>
       {loading && <Loader />}
       {error && <p>...error</p>}
-      {reviews.length > 0 ? (
-        <ReviewsList>{elements}</ReviewsList>
-      ) : (
+      {reviews.length > 0 && <ReviewsList>{elements}</ReviewsList>}
+      {!error && !loading && reviews.length === 0 && (
         <MoviesAbsenceView message="No review available yet" />
       )}
     </ReviewsBox>
@@ -60,10 +56,3 @@ const ReviewsPage = () => {
 };
 
 export default ReviewsPage;
-
-// function onSmoothScroll() {
-//   window.scrollBy({
-//     top: 150,
-//     behavior: 'smooth',
-//   });
-// }

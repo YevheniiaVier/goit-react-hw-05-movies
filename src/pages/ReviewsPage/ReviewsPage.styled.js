@@ -6,8 +6,17 @@ export const ReviewsBox = styled.div`
 `;
 export const ReviewsInfo = styled.p`
   margin: 0;
+  font-weight: normal;
 `;
 
-export const ReviewsList = styled.ul``;
+export const ReviewsList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  text-align: justify;
+`;
 
-export const ReviewsItem = styled.li``;
+export const ReviewsItem = styled.li`
+  font-weight: bold;
+`;

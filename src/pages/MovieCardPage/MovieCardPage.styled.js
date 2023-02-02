@@ -40,6 +40,7 @@ export const MenuItem = styled.li`
 
 export const Box = styled.div`
   display: flex;
+  justify-content: center;
   margin-top: 40px;
   gap: 20px;
 `;
