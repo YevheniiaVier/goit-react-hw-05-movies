@@ -19,7 +19,7 @@ export const UserRoutes = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:id" element={<MovieCardPage />}>
-          <Route path="credits" element={<CastPage />} />
+          <Route path="cast" element={<CastPage />} />
           <Route path="reviews" element={<ReviewsPage />} />
         </Route>
         <Route path="*" element={<NotExistingPage />} />

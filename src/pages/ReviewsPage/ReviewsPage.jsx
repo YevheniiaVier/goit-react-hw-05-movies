@@ -35,6 +35,10 @@ const ReviewsPage = () => {
     fetchMovieReviews();
   }, [id]);
 
+  // useEffect(() => {
+  //   onSmoothScroll();
+  // }, [reviews]);
+
   const elements = reviews.map(({ author, content, id }) => (
     <ReviewsItem key={id}>
       {author}
@@ -56,3 +60,10 @@ const ReviewsPage = () => {
 };
 
 export default ReviewsPage;
+
+// function onSmoothScroll() {
+//   window.scrollBy({
+//     top: 150,
+//     behavior: 'smooth',
+//   });
+// }

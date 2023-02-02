@@ -72,7 +72,6 @@ const MovieCardPage = () => {
         {poster_path && (
           <PosterBox>
             <Poster
-              t={title ?? name ?? original_title ?? original_name}
               srcset={`https://image.tmdb.org/t/p/w300${poster_path}      300w,
                 https://image.tmdb.org/t/p/w500${poster_path}      500w,
                 https://image.tmdb.org/t/p/w780${poster_path}      780w,
@@ -107,7 +106,7 @@ const MovieCardPage = () => {
       </Box>
       <MenuList>
         <MenuItem>
-          <Link state={{ from }} to={`/movies/${id}/credits`}>
+          <Link state={{ from }} to={`/movies/${id}/cast`}>
             Cast
           </Link>
         </MenuItem>
