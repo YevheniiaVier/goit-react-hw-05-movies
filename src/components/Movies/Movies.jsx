@@ -5,7 +5,7 @@ import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Message, Wrapper } from './Movies.styled';
 import { Loader } from 'components/Loader/Loader';
 
-export const Movies = () => {
+export const Movies = ({ onMoviesSearch }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
