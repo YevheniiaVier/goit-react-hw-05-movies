@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -87,7 +89,13 @@ const MoviesPage = () => {
   );
 };
 
-export default MoviesPage;
+MoviesPage.defaultProps = {
+  movies: [],
+};
+
+MoviesPage.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
 
 function onSmoothScroll() {
   const { height: cardHeight } = document
@@ -98,3 +106,5 @@ function onSmoothScroll() {
     behavior: 'smooth',
   });
 }
+
+export default MoviesPage;

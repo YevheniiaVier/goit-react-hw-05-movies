@@ -12,8 +12,8 @@ export const Movies = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      setLoading(true);
       try {
+        setLoading(true);
         const result = await getMovies();
         setMovies(prevState => [...prevState, ...result]);
       } catch (error) {

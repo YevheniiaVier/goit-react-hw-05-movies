@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useState } from 'react';
 import { SearchForm, Field, SearchBtn } from './MovieSearchForm.styled';
 import { FaSearchengin } from 'react-icons/fa';
@@ -32,4 +34,8 @@ export const MovieSearchForm = ({ onSubmit }) => {
       </SearchBtn>
     </SearchForm>
   );
+};
+
+MovieSearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

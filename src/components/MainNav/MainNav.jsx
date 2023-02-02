@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Box, List, Item, Link } from './MainNav.styled';
 import navItems from './items';
 
@@ -12,4 +14,12 @@ export const MainNav = () => {
       <List>{elements}</List>
     </Box>
   );
+};
+
+MainNav.propTypes = {
+  navItems: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
 };

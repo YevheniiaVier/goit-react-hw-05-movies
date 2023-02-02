@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { RiArrowGoBackFill } from 'react-icons/ri';
@@ -118,6 +120,20 @@ const MovieCardPage = () => {
       <Outlet />
     </>
   );
+};
+
+MovieCardPage.propTypes = {
+  movieCard: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    original_name: PropTypes.string.isRequired,
+    original_title: PropTypes.string.isRequired,
+    genres: PropTypes.string.isRequired,
+    vote_average: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+  }),
 };
 
 export default MovieCardPage;
