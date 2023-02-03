@@ -15,8 +15,7 @@ export const Movies = () => {
   const [totalPages, setTotalPages] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get('page');
-
+  const page = searchParams.get('page') || 1;
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -31,9 +30,9 @@ export const Movies = () => {
       }
     };
     fetchMovies();
-
-    console.log('fetch');
+    window.scrollTo(0, 0);
   }, [page]);
+
   const onPageChange = currentPage => {
     if (page === currentPage) {
       return;

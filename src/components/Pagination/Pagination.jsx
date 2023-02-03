@@ -1,4 +1,4 @@
-// import shortid from 'shortid';
+import shortid from 'shortid';
 import { usePagination, DOTS } from 'usePagination';
 import {
   PaginationItem,
@@ -21,7 +21,7 @@ const Pagination = props => {
     totalPagesCount,
   });
 
-  console.log(currentPage);
+  // console.log(currentPage);
 
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
@@ -39,6 +39,7 @@ const Pagination = props => {
   return (
     <PaginationContainer>
       <PaginationItem
+        key={shortid.generate()}
         className={currentPage === 1 && 'disabled'}
         onClick={onPrevious}
       >
@@ -46,11 +47,14 @@ const Pagination = props => {
       </PaginationItem>
       {paginationRange.map(pageNumber => {
         if (pageNumber === DOTS) {
-          return <PaginationItem>&#8230;</PaginationItem>;
+          return (
+            <PaginationItem key={shortid.generate()}>&#8230;</PaginationItem>
+          );
         }
 
         return (
           <PaginationItem
+            key={shortid.generate()}
             className={pageNumber === currentPage && 'selected'}
             onClick={() => onPageChange(pageNumber)}
           >
@@ -59,6 +63,7 @@ const Pagination = props => {
         );
       })}
       <PaginationItem
+        key={shortid.generate()}
         className={currentPage === lastPage && 'disabled'}
         onClick={onNext}
       >

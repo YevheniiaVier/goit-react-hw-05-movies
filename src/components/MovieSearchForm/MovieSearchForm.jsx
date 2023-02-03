@@ -10,12 +10,10 @@ export const MovieSearchForm = ({ onSubmit }) => {
   const handleChange = ({ target }) => {
     const { value } = target;
     setSearchQuery(value);
-    console.log('value in change');
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('value in form', searchQuery);
     onSubmit(searchQuery);
     setSearchQuery('');
   };
