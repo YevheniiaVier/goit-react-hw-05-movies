@@ -40,19 +40,23 @@ export const MenuItem = styled.li`
 `;
 
 export const Box = styled.div`
-  display: flex;
   justify-content: center;
   padding: ${p => p.theme.space[6]}px;
   margin-top: 40px;
   gap: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  @media screen and (min-width: 600px) {
+    display: flex;
+  }
 `;
 export const PosterBox = styled.div`
-  min-width: 300px;
   margin-bottom: 40px;
   border-radius: 3%;
   overflow: hidden;
+  @media screen and (min-width: 600px) {
+    min-width: 300px;
+  }
 `;
 
 export const Container = styled.div`
