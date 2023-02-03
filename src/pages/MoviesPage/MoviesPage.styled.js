@@ -10,8 +10,6 @@ export const Box = styled.div`
   gap: 20px;
 `;
 
-// export const Title = styled.h2``;
-
 export const SearchEndMessage = styled.p`
   color: ${p => p.theme.colors.primary};
   font-weight: ${p => p.theme.fontWeights.bold};

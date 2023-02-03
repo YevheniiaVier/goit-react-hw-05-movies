@@ -94,7 +94,6 @@ const MovieCardPage = () => {
         )}
         {Object.keys(movieCard).length !== 0 && (
           <InfoBox>
-            {/* {console.log(Object.keys(movieCard)).length} */}
             <Title>{movieTitle}</Title>
 
             {popularity && (

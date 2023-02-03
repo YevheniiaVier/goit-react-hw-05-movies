@@ -16,7 +16,6 @@ const MoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showButton, setShowButton] = useState(false);
-  // const [page, setPage] = useState(1);
   const [searchEnd, setSearchEnd] = useState('');
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,20 +26,18 @@ const MoviesPage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        setShowButton(false);
         setLoading(true);
         const pagesData = [];
         let totalPages;
-        // decided to reload all data to show all pages after GOBACK
+        // decided to reload all pages data to show all pages after GOBACK
         for (let i = 1; i <= page; i += 1) {
           const { results, total_pages } = await getMovieBySearch(search, i);
           pagesData.push(...results);
           totalPages = total_pages;
         }
-        // const data = await getMovieBySearch(search, page);
-        // setMovies(prevState => [...prevState, ...data.results]);
         setMovies(pagesData);
-        console.log(page);
-        console.log(totalPages);
+
         setShowButton(true);
         if (page === totalPages) {
           setShowButton(false);
@@ -87,24 +84,19 @@ const MoviesPage = () => {
     setSearchParams({ search, page: Number(page) + 1 });
   };
 
-  // const onPageChange = currentPage => {
-  //   if (page === currentPage) {
-  //     return;
-  //   }
-  //   setSearchParams({ page: currentPage });
-  // };
-
   return (
     <Box>
-      {/* <Title>Movies</Title> */}
       <MovieSearchForm onSubmit={handleSearch} />
-      {loading && <Loader />}
       {error && <MoviesAbsenceView message={error.message} />}
       {movies.length > 0 && <MoviesList movies={movies} />}
       {showButton && (
         <Button type="button" text="Load more" onClick={loadMore} />
       )}
-      {searchEnd && <SearchEndMessage>{searchEnd}</SearchEndMessage>}
+      {loading && <Loader />}
+
+      {!showButton && searchEnd && (
+        <SearchEndMessage>{searchEnd}</SearchEndMessage>
+      )}
     </Box>
   );
 };
