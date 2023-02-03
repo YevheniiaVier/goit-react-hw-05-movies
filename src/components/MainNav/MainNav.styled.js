@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const Box = styled.div`
   display: flex;
+  z-index: 10;
   padding: ${p => p.theme.space[3]}px;
   justify-content: center;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
