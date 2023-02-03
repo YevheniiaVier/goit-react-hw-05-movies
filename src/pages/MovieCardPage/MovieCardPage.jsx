@@ -9,6 +9,7 @@ import { Loader } from 'components/Loader/Loader';
 import { MoviesAbsenceView } from 'components/MoviesAbsenceView/MoviesAbsenceView';
 
 import {
+  Container,
   Box,
   Title,
   GoBackBtn,
@@ -64,7 +65,7 @@ const MovieCardPage = () => {
   const popularity = vote_average !== 0 ? vote_average : false;
 
   return (
-    <>
+    <Container>
       <GoBackBtn type="button" onClick={goBack}>
         <RiArrowGoBackFill /> Go back
       </GoBackBtn>
@@ -132,7 +133,7 @@ const MovieCardPage = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-    </>
+    </Container>
   );
 };
 

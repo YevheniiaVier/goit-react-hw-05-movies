@@ -9,7 +9,7 @@ export const StyledLink = styled(NavLink)`
   padding-bottom: ${p => p.theme.space[4]}px;
   padding-left: ${p => p.theme.space[6]}px;
   padding-right: ${p => p.theme.space[6]}px;
-  background-color: ${p => p.theme.colors.accentDark};
+  background-color: ${p => p.theme.colors.grey};
   color: ${p => p.theme.colors.primary};
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bolder};
@@ -20,8 +20,10 @@ export const StyledLink = styled(NavLink)`
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.accent};
   }
-  &:hover {
-    color: ${p => p.theme.colors.white};
+
+  :hover:not(.active),
+  :focus-visible:not(.active) {
+    color: ${p => p.theme.colors.accentDark};
   }
 `;
 
@@ -29,7 +31,6 @@ export const MenuList = styled.ul`
   list-style: none;
   display: flex;
   gap: 40px;
-  //   justify-content: center;
 `;
 
 export const MenuItem = styled.li`
@@ -41,13 +42,22 @@ export const MenuItem = styled.li`
 export const Box = styled.div`
   display: flex;
   justify-content: center;
+  padding: ${p => p.theme.space[6]}px;
   margin-top: 40px;
   gap: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 `;
 export const PosterBox = styled.div`
+  min-width: 300px;
   margin-bottom: 40px;
+  border-radius: 3%;
+  overflow: hidden;
 `;
 
+export const Container = styled.div`
+  padding-top: 100px;
+`;
 export const Title = styled.h2`
   margin: 0;
   font-weight: bold;
@@ -69,6 +79,7 @@ export const InfoBox = styled.div`
   font-size: 12px;
   line-height: 1.16;
   color: #000000;
+  text-align: justify;
 `;
 export const Info = styled.p`
   margin: 0;

@@ -5,6 +5,22 @@ export const Box = styled.div`
   display: flex;
   padding: ${p => p.theme.space[3]}px;
   justify-content: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #efefbb; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d4d3dd,
+    #efefbb
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d4d3dd,
+    #efefbb
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 export const List = styled.ul`
@@ -23,7 +39,7 @@ export const Link = styled(NavLink)`
   padding-bottom: ${p => p.theme.space[4]}px;
   padding-left: ${p => p.theme.space[6]}px;
   padding-right: ${p => p.theme.space[6]}px;
-  background-color: ${p => p.theme.colors.accentDark};
+  background-color: ${p => p.theme.colors.grey};
   color: ${p => p.theme.colors.primary};
   font-size: ${p => p.theme.fontSizes.m};
 
@@ -33,13 +49,13 @@ export const Link = styled(NavLink)`
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
       0px 2px 1px rgba(0, 0, 0, 0.2);
     color: ${p => p.theme.colors.white};
-    background-color: ${p => p.theme.colors.accent};
+    background-color: ${p => p.theme.colors.accentDark};
   }
   :hover {
     color: ${p => p.theme.colors.white};
   }
   :hover:not(.active),
   :focus-visible:not(.active) {
-    color: ${p => p.theme.colors.white};
+    color: ${p => p.theme.colors.accentDark};
   }
 `;

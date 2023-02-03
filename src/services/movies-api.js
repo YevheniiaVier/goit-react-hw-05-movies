@@ -17,7 +17,7 @@ export const getMovies = async (page = 1) => {
       page,
     },
   });
-  return data.results;
+  return data;
 };
 
 export const getMovieCard = async id => {

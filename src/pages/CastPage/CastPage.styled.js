@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const CastBox = styled.div`
+  // padding-top: 100px;
+
   display: flex;
   justify-content: center;
 `;
@@ -35,7 +37,9 @@ export const CastCard = styled.li`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 2%;
   justify-content: center;
   width: 220px;
 `;

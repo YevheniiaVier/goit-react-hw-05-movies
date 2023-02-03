@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Loader } from 'components/Loader/Loader';
-import { Box, Title, SearchEndMessage } from './MoviesPage.styled';
+import { Box, SearchEndMessage } from './MoviesPage.styled';
 import { MovieSearchForm } from 'components/MovieSearchForm/MovieSearchForm';
 import { getMovieBySearch } from 'services/movies-api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
@@ -16,27 +16,39 @@ const MoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showButton, setShowButton] = useState(false);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [searchEnd, setSearchEnd] = useState('');
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const search = searchParams.get('search');
+  const page = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const data = await getMovieBySearch(search, page);
-        setMovies(prevState => [...prevState, ...data.results]);
+        const pagesData = [];
+        let totalPages;
+        // decided to reload all data to show all pages after GOBACK
+        for (let i = 1; i <= page; i += 1) {
+          const { results, total_pages } = await getMovieBySearch(search, i);
+          pagesData.push(...results);
+          totalPages = total_pages;
+        }
+        // const data = await getMovieBySearch(search, page);
+        // setMovies(prevState => [...prevState, ...data.results]);
+        setMovies(pagesData);
+        console.log(page);
+        console.log(totalPages);
         setShowButton(true);
-        if (page === data.total_pages) {
+        if (page === totalPages) {
           setShowButton(false);
           setSearchEnd(
             `We're sorry, but you've reached the end of search results.`
           );
         }
-        if (data.results.length === 0) {
+        if (pagesData.length === 0) {
           setMovies([]);
           setShowButton(false);
           throw new Error(
@@ -44,6 +56,7 @@ const MoviesPage = () => {
           );
         }
       } catch (error) {
+        console.group(error);
         setError(error);
       } finally {
         setLoading(false);
@@ -66,17 +79,24 @@ const MoviesPage = () => {
       return;
     }
     setMovies([]);
-    setSearchParams({ search: searchText });
-    setPage(1);
+    setSearchParams({ search: searchText, page: 1 });
     setSearchEnd('');
     setError(null);
   };
   const loadMore = () => {
-    setPage(prevState => prevState + 1);
+    setSearchParams({ search, page: Number(page) + 1 });
   };
+
+  // const onPageChange = currentPage => {
+  //   if (page === currentPage) {
+  //     return;
+  //   }
+  //   setSearchParams({ page: currentPage });
+  // };
+
   return (
     <Box>
-      <Title>Movies</Title>
+      {/* <Title>Movies</Title> */}
       <MovieSearchForm onSubmit={handleSearch} />
       {loading && <Loader />}
       {error && <MoviesAbsenceView message={error.message} />}
