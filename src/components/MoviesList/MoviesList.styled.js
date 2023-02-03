@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export const List = styled.ul`
   display: flex;
-  //   flex-direction: column;
   gap: 20px;
   margin: 0;
   padding: 0;
@@ -17,12 +16,12 @@ overflow: hidden;
 border-radius: 5px 5px 5px 5px;
 transition: box-shadow 250ms linear;
 width: 230px;
+  padding: 10px;
+box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 &:hover,
 &:focus {
 cursor: pointer;
-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
-0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
-}
+box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;}
 }
 `;
 

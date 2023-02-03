@@ -3,7 +3,8 @@ import { Suspense } from 'react';
 
 import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { RiArrowGoBackFill } from 'react-icons/ri';
+import { TfiControlBackward } from 'react-icons/tfi';
+
 import { getMovieCard } from 'services/movies-api';
 import { Loader } from 'components/Loader/Loader';
 import { MoviesAbsenceView } from 'components/MoviesAbsenceView/MoviesAbsenceView';
@@ -67,7 +68,7 @@ const MovieCardPage = () => {
   return (
     <Container>
       <GoBackBtn type="button" onClick={goBack}>
-        <RiArrowGoBackFill /> Go back
+        <TfiControlBackward /> Go back
       </GoBackBtn>
       <Box>
         {loading && <Loader />}

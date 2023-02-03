@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   align-items: center;
+  width: 120px;
   appearance: none;
   background-image: radial-gradient(
     100% 100% at 100% 0,
@@ -9,15 +10,15 @@ export const StyledButton = styled.button`
     rgb(8, 157, 194) 100%
   );
   border: 0;
-  border-radius: 6px;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  border-radius: 20px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px;
   box-sizing: border-box;
-  color: #fff;
+  color: ${p => p.theme.colors.primary}
   cursor: pointer;
   display: inline-flex;
+  gap: 5px;
   font-family: 'JetBrains Mono', monospace;
-  height: 48px;
+  height: 40px;
   justify-content: center;
   line-height: 1;
   list-style: none;
@@ -34,10 +35,10 @@ export const StyledButton = styled.button`
   white-space: nowrap;
   will-change: box-shadow, transform;
   font-size: 18px;
-  &:hover,
-  &:focus {
+  &:hover {
+    color: ${p => p.theme.colors.white};
     box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
-      rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgb(8, 157, 194) 0 -3px 0 inset;
+      rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #rgb(8, 157, 194) 0 -3px 0 inset;
   }
-  transition: background-color 300ms 100ms;
+  transition: all 300ms 100ms;
 `;

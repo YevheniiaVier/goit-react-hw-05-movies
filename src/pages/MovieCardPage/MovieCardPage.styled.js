@@ -18,7 +18,7 @@ export const StyledLink = styled(NavLink)`
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
       0px 2px 1px rgba(0, 0, 0, 0.2);
     color: ${p => p.theme.colors.white};
-    background-color: ${p => p.theme.colors.accent};
+    background-color: ${p => p.theme.colors.accentDark};
   }
 
   :hover:not(.active),
@@ -104,11 +104,10 @@ export const GoBackBtn = styled.button`
     rgb(8, 157, 194) 100%
   );
   border: 0;
-  border-radius: 6px;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  border-radius: 20px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px;
   box-sizing: border-box;
-  color: #fff;
+  color: ${p => p.theme.colors.primary}
   cursor: pointer;
   display: inline-flex;
   gap: 5px;
@@ -130,12 +129,12 @@ export const GoBackBtn = styled.button`
   white-space: nowrap;
   will-change: box-shadow, transform;
   font-size: 18px;
-  &:hover,
-  &:focus {
+  &:hover {
+    color: ${p => p.theme.colors.white};
     box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
       rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #rgb(8, 157, 194) 0 -3px 0 inset;
   }
-  transition: background-color 300ms 100ms;
+  transition: all 300ms 100ms;
 `;
 
 export const Poster = styled.img.attrs(props => ({
